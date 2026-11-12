@@ -10,5 +10,5 @@ export PATH="$CUDA_HOME/bin:$PATH"
 export HF_HOME="$SAN_STORAGE/cache/huggingface"
 export TORCH_HOME="$SAN_STORAGE/cache/torch"
 export XDG_CACHE_HOME="$SAN_STORAGE/cache/xdg"
-export SAN_CLIP_WEIGHTS="$SAN_STORAGE/cache/clip/ViT-L-14-336px.pt"
+export SAN_CLIP_CACHE="$SAN_STORAGE/cache/clip"
 unset PYTHONPATH
