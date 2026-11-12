@@ -23,8 +23,11 @@ while True:
     for p in Path('/proc').glob('[0-9]*/cmdline'):
         try:
             cmd=p.read_bytes().replace(b'\0',b' ').decode(errors='replace')
-            if ('instructpart-san/bin/python -m pip' in cmd or 'deployment/download_file.py ' in cmd or cmd.startswith('curl ')) and len(cmd)<2000:
-                active.append(cmd)
+            args=cmd.split()
+            if args and not args[0].endswith(('bash','sh')):
+                if 'deployment/download_file.py ' in cmd: active.append('分段下载 '+args[-2].split('/')[-1])
+                elif 'instructpart-san/bin/python -m pip' in cmd: active.append('安装 Python 依赖')
+                elif cmd.startswith('curl '): active.append('下载文件')
         except OSError: pass
     emit('正在运行: '+' | '.join(active) if active else '没有检测到安装/下载进程；请结合阶段记录确认状态。')
     time.sleep(10)

@@ -19,10 +19,13 @@ def get(job):
  for attempt in range(5):
   try:
    sep='&' if '?' in a.url else '?'
-   req=urllib.request.Request(a.url+sep+'san_range='+str(start),headers={'Range':f'bytes={start}-{end}'})
+   offset=part.stat().st_size if part.exists() else 0
+   current=start+offset
+   if current==end+1:return
+   req=urllib.request.Request(a.url+sep+'san_range='+str(current),headers={'Range':f'bytes={current}-{end}'})
    with urllib.request.urlopen(req,timeout=60) as r:
-    if r.status!=206 or not r.headers.get('Content-Range','').startswith(f'bytes {start}-{end}/'):raise RuntimeError('Unexpected range response')
-    with part.open('wb') as f:
+    if r.status!=206 or not r.headers.get('Content-Range','').startswith(f'bytes {current}-{end}/'):raise RuntimeError('Unexpected range response')
+    with part.open('ab') as f:
      while True:
       b=r.read(1024*1024)
       if not b:break
