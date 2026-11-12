@@ -3,7 +3,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 source deployment/env.sh
 SAN_PYTHON="${SAN_PYTHON:-/home/pupu/miniconda3/envs/instructpart-san/bin/python}"
-SAN_IMAGE="${SAN_IMAGE:-/home/pupu/insPart/external/X-Decoder/inference/images/fruit.jpg}"
+SAN_IMAGE="${SAN_IMAGE:-$SAN_ROOT/deployment/assets/fruit.jpg}"
 mkdir -p logs outputs
 "$SAN_PYTHON" deployment/smoke_forward.py \
  --method san --repo "$SAN_ROOT" \
