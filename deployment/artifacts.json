@@ -1,0 +1,17 @@
+[
+  {
+    "path": "weights/san_vit_large_14.pth",
+    "sha256": "dd605f75f8ec66a107164b064c3ef217deae2848349dc52e6eab6f0b071bf12c",
+    "bytes": 1821680110
+  },
+  {
+    "path": "cache/clip/ViT-L-14-336px.pt",
+    "sha256": "3035c92b350959924f9f00213499208652fc7ea050643e8b385c2dac08641f02",
+    "bytes": 934088680
+  },
+  {
+    "path": "wheels/torch-2.1.0+cu118-cp310-cp310-linux_x86_64.whl",
+    "sha256": "a81b554184492005543ddc32e96469f9369d778dedd195d73bda9bed407d6589",
+    "bytes": 2325888121
+  }
+]
