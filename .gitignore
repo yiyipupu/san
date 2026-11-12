@@ -56,3 +56,9 @@ _darcs
 
 wandb
 amlt
+# Local deployment artifacts
+logs/
+outputs/
+cache/
+weights/
+.envs/
