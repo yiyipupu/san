@@ -1,0 +1,65 @@
+{
+  "online": {
+    "status": "forward_passed",
+    "method": "san",
+    "image": "/home/pupu/insPart/SAN/deployment/assets/fruit.jpg",
+    "text": "watermelon",
+    "short_side": 512,
+    "output_shape": [
+      477,
+      634
+    ],
+    "foreground_pixels": 36287,
+    "torch": "2.1.0+cu118",
+    "torch_cuda": "11.8",
+    "gpu": "NVIDIA GeForce RTX 3060",
+    "peak_allocated_mib": 2323.7,
+    "note": "Deployment check only; no accuracy or training claim"
+  },
+  "offline": {
+    "status": "forward_passed",
+    "method": "san",
+    "image": "/home/pupu/insPart/SAN/deployment/assets/fruit.jpg",
+    "text": "watermelon",
+    "short_side": 512,
+    "output_shape": [
+      477,
+      634
+    ],
+    "foreground_pixels": 36287,
+    "torch": "2.1.0+cu118",
+    "torch_cuda": "11.8",
+    "gpu": "NVIDIA GeForce RTX 3060",
+    "peak_allocated_mib": 2323.7,
+    "note": "Deployment check only; no accuracy or training claim"
+  },
+  "gpu_probe": {
+    "python": "3.10.22",
+    "torch": "2.1.0+cu118",
+    "torch_cuda": "11.8",
+    "compiled_arches": [
+      "sm_50",
+      "sm_60",
+      "sm_70",
+      "sm_75",
+      "sm_80",
+      "sm_86",
+      "sm_37",
+      "sm_90"
+    ],
+    "gpus": [
+      {
+        "index": 0,
+        "name": "NVIDIA GeForce RTX 3060",
+        "capability": [
+          8,
+          6
+        ],
+        "memory_gib": 11.73,
+        "forward_backward": "passed"
+      }
+    ]
+  },
+  "pip_check": "No broken requirements found.",
+  "training_verified": false
+}
