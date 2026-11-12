@@ -16,7 +16,7 @@ jobs=[(i,s,min(s+chunk,a.size)-1) for i,s in enumerate(range(prefix,a.size,chunk
 def get(job):
  i,start,end=job;part=partdir/str(start)
  if part.exists() and part.stat().st_size==end-start+1:return
- for attempt in range(5):
+ for attempt in range(10):
   try:
    sep='&' if '?' in a.url else '?'
    offset=part.stat().st_size if part.exists() else 0
@@ -35,8 +35,8 @@ def get(job):
   except Exception as e:
    note(f'{target.name}: 分段 {start} 重试 {attempt+1}: {e}');time.sleep(2)
  raise RuntimeError(f'Failed range {start}')
-note(f'{target.name}: 启动6路分段下载，保留已有 {prefix/1e6:.1f} MB；源 {a.url}')
-with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
+note(f'{target.name}: 启动12路分段下载，保留已有 {prefix/1e6:.1f} MB；源 {a.url}')
+with concurrent.futures.ThreadPoolExecutor(max_workers=12) as pool:
  for _ in pool.map(get,jobs):
   total=prefix+sum(x.stat().st_size for x in partdir.iterdir())
   note(f'{target.name}: 已下载 {total/1e6:.1f}/{a.size/1e6:.1f} MB ({100*total/a.size:.1f}%)')

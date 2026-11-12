@@ -1,6 +1,6 @@
 # Source this file before running SAN.
-export SAN_ROOT=/home/pupu/insPart/SAN
-export SAN_STORAGE=/media/pupu/PUPU/insPart/SAN
+export SAN_ROOT="${SAN_ROOT:-/home/pupu/insPart/SAN}"
+export SAN_STORAGE="${SAN_STORAGE:-/media/pupu/PUPU/insPart/SAN}"
 if ! mountpoint -q /media/pupu/PUPU; then
   echo "SAN disk is not mounted" >&2
   return 1
