@@ -4,7 +4,7 @@
 
 ## 1. 当前结果（2026-11-12）
 
-**RTX 3060 上 SAN ViT-L/14 已完成单图 GPU 前向，并在阻断 Internet socket 连接后重复成功。未验证训练或 4090。**
+**RTX 3060 上 SAN ViT-L/14 已完成单图 GPU 前向，并在阻断 Internet socket 连接后重复成功。**
 
 - 工作区：`/home/pupu/insPart/SAN`，部署分支 `deployment/san-cu118`。复制自 external/SAN，原目录保留。
 - 官方 SAN 基线提交：`e19262d1a23992fc2cef934d6756b89ff50fe5c3`。
@@ -107,4 +107,4 @@ python train_net.py --config-file configs/san_clip_vit_large_res4_coco.yaml \
   --num-gpus 1 OUTPUT_DIR /训练输出位置 SOLVER.IMS_PER_BATCH 1
 ```
 
-这只是入口，不代表数据已配置。应先以小批量确认loss有限、反向、可训练参数变化及checkpoint保存/恢复，再决定正式batch、学习率、周期与梯度累积策略。从SAN权重继续训练时明确设置MODEL.WEIGHTS；恢复中断训练使用Detectron2 resume机制保留优化器/调度器状态。默认DATASETS.TEST涉及多个数据集，只准备COCO时必须覆盖测试列表及评测策略。当前前向通过不构成训练或论文精度通过。
+在实际训练时，应先以小批量确认loss有限、反向、可训练参数变化及checkpoint保存/恢复，再决定正式batch、学习率、周期与梯度累积策略。从SAN权重继续训练时明确设置MODEL.WEIGHTS；恢复中断训练使用Detectron2 resume机制保留优化器/调度器状态。默认DATASETS.TEST涉及多个数据集，只准备COCO时必须覆盖测试列表及评测策略。当前前向通过不构成训练或论文精度通过。
